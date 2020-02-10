@@ -35,7 +35,7 @@
 		<activemq.version>5.11.2</activemq.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
-		<hibernate.validator>6.0.16.Final</hibernate.validator>
+		<hibernate.validator>6.1.0.Final</hibernate.validator>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
