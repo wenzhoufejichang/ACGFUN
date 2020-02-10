@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:soap="http://cxf.apache.org/bindings/soap"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://cxf.apache.org/jaxws
+	http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/bindings/soap 
+	http://cxf.apache.org/schemas/configuration/soap.xsd">
+
+
+
+
+
+
+
+
+
+
+
+	<context:property-placeholder
+		location="classpath:properties/sql/pool.properties" />
+
+
+
+
+
+	<bean class="com.alibaba.druid.pool.DruidDataSource"
+		id="druidDataSource">
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		id="TransactionManager">
+
+		<property name="dataSource" ref="druidDataSource"></property>
+	</bean>
+
+
+	<tx:annotation-driven
+		transaction-manager="TransactionManager" />
+
+
+
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		id="SqlSessionFactoryBean">
+		<property name="dataSource" ref="druidDataSource"></property>
+		<property name="configLocation" value="classpath:mybtais.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.hzm.dao"></property>
+	</bean>
+
+
+	<bean id="shirofactory"
+		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/findGoods=roleorfilter["1","2","4"]
+			</value>
+		</property>
+		<property name="filters">
+			<map>
+				<entry key="roleorfilter" value-ref="shiropermsfilter">
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean class="com.hzm.filter.ShiroPermsFilter"
+		id="shiropermsfilter"></bean>
+
+	<!-- 注册安全管理器 -->
+	<bean class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"
+		id="securityManager">
+		<property name="realm" ref="myrealm"></property>
+		<!-- 注入缓存管理器 -->
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+	<!-- 缓存管理器 -->
+	<bean class="org.apache.shiro.cache.ehcache.EhCacheManager"
+		id="cacheManager">
+		<!-- 注入缓存配置文件 -->
+		<property name="cacheManagerConfigFile"
+			value="classpath:ehcache.xml" />
+	</bean>
+	<!-- realm -->
+	<bean class="com.hzm.realms.MyRealms" id="myrealm">
+
+	</bean>
+
+
+
+
+
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+	updateCheck="false">
+
+
+	<!-- 内存的对象放满了后多出对象放倒磁盘上 -->
+	<diskStore path="E:\myshirocache2" />
+
+
+	<!-- maxElementsInMemory内存中能放的对象 -->
+	<!-- eternal缓存的数据是否永久有效 -->
+	<!-- timeToIdleSeconds没有操作的最大时间间隔(秒),超出这个时间,缓存过期 -->
+	<!-- timeToLiveSeconds缓存的最大生命周期(秒) -->
+	<!-- overflowToDisk内存的数据放满了后是否放倒磁盘上 -->
+	<!-- maxElementsOnDisk磁盘上最大放的数据量 -->
+	<!-- diskPersistent tomcatc重启后是否讲内存中的数据序列化到磁盘上(不建议) -->
+	<!-- diskExpiryThreadIntervalSeconds启动线程检查的时间间隔 -->
+	<!-- memoryStoreEvictionPolicy淘汰策略(LRU:最近最少使用的先淘汰) -->
+
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="3600" overflowToDisk="true"
+		maxElementsOnDisk="10000000" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+
+
+</ehcache>
