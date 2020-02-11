@@ -127,10 +127,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-
 
 		<!--swagger -->
 		<dependency>
@@ -194,7 +193,7 @@
 				<!-- 配置Tomcat插件 -->
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
-	
+
 					<artifactId>tomcat7-maven-plugin</artifactId>
 					<configuration>
 						<uriEncoding>utf-8</uriEncoding>
