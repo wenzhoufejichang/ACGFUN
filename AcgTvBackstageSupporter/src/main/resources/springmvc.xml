@@ -28,6 +28,10 @@
 	http://www.springframework.org/schema/util 
 	http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
+
+
+	<mvc:default-servlet-handler />
+
 	<mvc:annotation-driven>
 		<mvc:message-converters
 			register-defaults="true">
@@ -61,22 +65,6 @@
 	</bean>
 
 
-	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
-	<mvc:resources location="/" mapping="favicon.ico"></mvc:resources>
-	<mvc:resources location="/" mapping="json.json"></mvc:resources>
-	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
-	<mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
-	<mvc:resources location="/framework/"
-		mapping="/framework/**"></mvc:resources>
-	<mvc:resources location="/TweenLite/"
-		mapping="/TweenLite/**"></mvc:resources>
-	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
-	<mvc:resources location="/easyui/" mapping="/easyui/**"></mvc:resources>
-
-	<mvc:resources mapping="swagger-ui.html"
-		location="classpath:/META-INF/resources/" />
-	<mvc:resources mapping="/webjars/**"
-		location="classpath:/META-INF/resources/webjars/" />
 	<bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
@@ -84,12 +72,9 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 
-	<!-- <bean
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"
-		id="freeMarkerConfig">
-		<property name="templateLoaderPath" value="/WEB-INF/"></property>
-		<property name="defaultEncoding" value="UTF-8"></property>
-	</bean> -->
+	<!-- <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer" 
+		id="freeMarkerConfig"> <property name="templateLoaderPath" value="/WEB-INF/"></property> 
+		<property name="defaultEncoding" value="UTF-8"></property> </bean> -->
 
 
 

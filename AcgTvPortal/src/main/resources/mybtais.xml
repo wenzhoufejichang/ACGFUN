@@ -13,9 +13,6 @@
 		<package name="com.hzm.domain" />
 	</typeAliases>
 
-	<mappers>
-		<package name="com.hzm.dao" />
-	</mappers>
 
 
 </configuration>

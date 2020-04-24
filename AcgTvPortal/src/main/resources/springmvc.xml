@@ -64,18 +64,6 @@
 	</bean>
 
 
-	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
-	<mvc:resources location="/" mapping="favicon.ico"></mvc:resources>
-	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
-	<mvc:resources location="/fonts/" mapping="/fonts/**"></mvc:resources>
-	<mvc:resources location="/framework/"
-		mapping="/framework/**"></mvc:resources>
-	<mvc:resources location="/photo/" mapping="/photo/**"></mvc:resources>
-
-	<mvc:resources mapping="swagger-ui.html"
-		location="classpath:/META-INF/resources/" />
-	<mvc:resources mapping="/webjars/**"
-		location="classpath:/META-INF/resources/webjars/" />
 
 
 

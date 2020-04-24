@@ -2,7 +2,7 @@ package com.hzm.domain;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 

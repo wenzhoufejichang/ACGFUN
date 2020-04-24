@@ -1,7 +1,8 @@
 package com.hzm.domain;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.ToString;

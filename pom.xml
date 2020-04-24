@@ -14,8 +14,8 @@
 		<mybatis.spring.version>2.0.1</mybatis.spring.version>
 		<mysql.version>5.1.32</mysql.version>
 		<slf4j.version>1.6.4</slf4j.version>
-		<jackson.version>2.9.10.3</jackson.version>
-		<druid.version>1.0.9</druid.version>
+		<jackson.version>2.9.10.4</jackson.version>
+		<druid.version>1.1.6</druid.version>
 		<httpclient.version>4.3.5</httpclient.version>
 		<jstl.version>1.2</jstl.version>
 		<servlet-api.version>2.5</servlet-api.version>
@@ -35,7 +35,8 @@
 		<activemq.version>5.11.2</activemq.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
-		<hibernate.validator>6.1.0.Final</hibernate.validator>
+		<hibernate.validator>5.4.3.Final</hibernate.validator>
+		<fastdfs.client.java>1.27.0.0</fastdfs.client.java>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -187,8 +188,9 @@
 				<version>${solrj.version}</version>
 			</dependency>
 			<!-- 后端校验 -->
+
 			<dependency>
-				<groupId>org.hibernate.validator</groupId>
+				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>${hibernate.validator}</version>
 			</dependency>
@@ -208,7 +210,7 @@
 
 
 
-			
+
 			<!-- md5 -->
 			<dependency>
 				<groupId>commons-codec</groupId>
@@ -234,13 +236,14 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>1.18.12</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<!-- fastdfs -->
 			<dependency>
 				<groupId>net.oschina.zcx7878</groupId>
 				<artifactId>fastdfs-client-java</artifactId>
-				<version>1.27.0.0</version>
+				<version>${fastdfs.client.java}</version>
 			</dependency>
 
 
