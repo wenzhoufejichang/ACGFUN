@@ -39,9 +39,6 @@
 		</dependency>
 
 
-
-
-
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
@@ -123,16 +120,11 @@
 			<artifactId>solr-solrj</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-
 
 
 		<!--swagger -->
@@ -189,27 +181,24 @@
 	</dependencies>
 
 
-
-
 	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- 配置Tomcat插件 -->
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
 
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<configuration>
-						<uriEncoding>utf-8</uriEncoding>
-						<path>/</path>
-						<port>8988</port>
-					</configuration>
-					<version>2.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		<plugins>
+			<!-- 配置Tomcat插件 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<uriEncoding>utf-8</uriEncoding>
+					<path>/</path>
+					<port>8988</port>
+				</configuration>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+
 	</build>
-
 
 
 </project>

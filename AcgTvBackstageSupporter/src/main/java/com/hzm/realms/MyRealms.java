@@ -1,5 +1,6 @@
 package com.hzm.realms;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -26,6 +27,7 @@ public class MyRealms extends AuthorizingRealm {
 		Admin ad = (Admin) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo simpleauthorizationinfo = new SimpleAuthorizationInfo();
 		simpleauthorizationinfo.addRole(String.valueOf(ad.getRoleId().getId()));
+		simpleauthorizationinfo.addStringPermissions(Arrays.asList("1", "2"));
 		return simpleauthorizationinfo;
 	}
 

@@ -61,9 +61,8 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#/{{active}}" data-toggle="modal" data-target="#adminMsgModel" ng-click="navClick()">管理员信息</a>
-						</li>
+						<li><a href="#/{{active}}" data-toggle="modal"
+							data-target="#adminMsgModel" ng-click="navClick()">管理员信息</a></li>
 						<li>
 							<a href="#/{{active}}" data-toggle="modal" data-target="#adminWork" ng-click="navClick()">工作任务</a>
 						</li>

@@ -7,13 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.Logical;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.csource.common.MyException;
 import org.csource.fastdfs.ClientGlobal;
@@ -44,8 +42,13 @@ public class Index {
 	private String palette_url;
 
 	@GetMapping("/")
-	public String index(HttpServletResponse httpServletResponse) {
+	public String index(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
+		Admin login = (Admin) SecurityUtils.getSubject().getPrincipal();
+
+		if (java.util.Objects.nonNull(login)) {
+			return "redirect:/background";
+		}
 		return "admin/index";
 
 	}
@@ -57,7 +60,6 @@ public class Index {
 
 	}
 
-	@RequiresAuthentication
 	@GetMapping("/background")
 	public String background() {
 		return "admin/background";
@@ -65,20 +67,31 @@ public class Index {
 	}
 
 	@PostMapping("/login")
-	public String login(@Valid Admin admin, BindingResult bindingResult, HttpServletRequest httpServletRequest) {
+	public String login(@Valid Admin admin, BindingResult bindingResult, HttpServletRequest httpServletRequest,
+			String rememberMe) {
 
 		if (bindingResult.getErrorCount() > 0) {
 			return "admin/index";
 		}
 		Subject sj = SecurityUtils.getSubject();
-		admin.setPassword(DigestUtils.md5Hex(admin.getPassword()));
-		AuthenticationToken at = new UsernamePasswordToken(admin.getName().trim(), admin.getPassword());// 配置令牌
+		String password = admin.getPassword();
+		String name = admin.getName();
+
+		password = new Md5Hash(password).toString();
+
+		admin.setPassword(password);
+		UsernamePasswordToken at = new UsernamePasswordToken(name.trim(), admin.getPassword());// 配置令牌
+		if ("on".equals(rememberMe)) {
+			at.setRememberMe(true);
+
+		}
 		try {
 
 			sj.login(at);// 去调用realms去检验登录--->执行自定义realm
 			Admin a = (Admin) sj.getPrincipal();// SimpleAuthenticationInfo(xxx,xxx,xxx);的第一个参数中绑定user对象
 			a.setPassword(null);
-			httpServletRequest.getSession().setAttribute("admin", a);
+			// httpServletRequest.getSession().setAttribute("admin", a);
+
 		} catch (Exception e) {
 
 			httpServletRequest.setAttribute("loginerror", "帐号或者密码错误,请重新输入");

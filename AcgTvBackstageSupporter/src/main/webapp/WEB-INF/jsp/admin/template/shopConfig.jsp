@@ -318,7 +318,7 @@
 
 								<img alt="图片" src="${palette_url }/${item.photoDesc}" style="width: 80px; height: 50px" name="image">
 
-							</a
+							</a>
 						</td>
 						<td>${item.price}</td>
 						<td>${item.stock}</td>

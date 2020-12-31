@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -6,31 +7,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/index.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/static/framework/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/static/css/index.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/static/framework/bootstrap.min.css" />
 </head>
 <body>
-	<div class="container-fluid" style="background-color: rgb(236, 236, 236)" id="footer">
+	<div class="container-fluid"
+		style="background-color: rgb(236, 236, 236)" id="footer">
 
 		<div class="container">
 			<h4 style="color: #bbb">友情链接</h4>
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
 					<ul style="list-style: none;">
-						<c:forEach items="${sessionScope.friendlink }" begin="0" end="2" var="friendlink">
-							<li>
-								<a href="${friendlink.src }" target="_blank">${friendlink.name }</a>
-							</li>
+						<c:forEach items="${sessionScope.friendlink }" begin="0" end="2"
+							var="friendlink">
+							<li><a href="${friendlink.src }" target="_blank">${friendlink.name }</a></li>
 						</c:forEach>
 					</ul>
 				</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-4">
 						<ul style="list-style: none;">
-							<c:forEach items="${sessionScope.friendlink }" begin="3" end="5" var="friendlink">
-								<li>
-									<a href="${friendlink.src }" target="_blank">${friendlink.name }</a>
-								</li>
+							<c:forEach items="${sessionScope.friendlink }" begin="3" end="5"
+								var="friendlink">
+								<li><a href="${friendlink.src }" target="_blank">${friendlink.name }</a></li>
 							</c:forEach>
 						</ul>
 					</div>

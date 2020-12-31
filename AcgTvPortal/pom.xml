@@ -234,21 +234,18 @@
 
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- 配置Tomcat插件 -->
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<configuration>
-						<uriEncoding>utf-8</uriEncoding>
-						<path>/</path>
-						<port>8989</port>
-					</configuration>
-					<version>2.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		<plugins>
+			<!-- 配置Tomcat插件 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<uriEncoding>utf-8</uriEncoding>
+					<path>/</path>
+					<port>8989</port>
+				</configuration>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
 	</build>
 </project>

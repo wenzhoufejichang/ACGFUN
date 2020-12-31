@@ -92,7 +92,15 @@
 		<property name="loginUrl" value="/"></property>
 		<property name="filterChainDefinitions">
 			<value>
+				/login=anon
 				/findGoods=roleorfilter["1","2","4"]
+				/css/**=anon<!--没有登录的状况下可以访问 -->
+				/images/**=anon
+				/js/**=anon
+				/fonts/**=anon
+				/framework/**=anon
+				/TweenLite/**=anon
+				/**=user
 			</value>
 		</property>
 		<property name="filters">
@@ -111,6 +119,7 @@
 		<property name="realm" ref="myrealm"></property>
 		<!-- 注入缓存管理器 -->
 		<property name="cacheManager" ref="cacheManager"></property>
+		<property name="rememberMeManager" ref="rememberMeManager"></property>
 	</bean>
 	<!-- 缓存管理器 -->
 	<bean class="org.apache.shiro.cache.ehcache.EhCacheManager"
@@ -124,7 +133,18 @@
 
 	</bean>
 
-
+	<!-- rememberMeCookie -->
+	<bean id="rememberMeCookie"
+		class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe" />
+		<property name="httpOnly" value="true" />
+		<property name="maxAge" value="2592000" /><!-- 30天 -->
+	</bean>
+	<!-- rememberMe管理器 -->
+	<bean id="rememberMeManager"
+		class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="rememberMeCookie" />
+	</bean>
 
 
 

@@ -33,21 +33,22 @@ function change(id){
 		});
 }
 
-function changety(id){
-	
-$('#videoTypeAdmin').on('show.bs.modal', function () {
-		
-		$.post("${pageContext.request.contextPath }/videotype",{id:id},function(data){
-			
-			$("#vid").val(data.id);
-			$("#vn").val(data.typeName);
-			$("#vt").val(data.typeIntroduce);
+function 
+	changety(id) {
+
+		$('#videoTypeAdmin').on('show.bs.modal', function() {
+
+			$.post("${pageContext.request.contextPath }/videotype", {
+				id : id
+			}, function(data) {
+
+				$("#vid").val(data.id);
+				$("#vn").val(data.typeName);
+				$("#vt").val(data.typeIntroduce);
+			});
+
 		});
-		
-		
-		
-		});
-}
+	}
 </script>
 <title>项目基本信息配置</title>
 </head>

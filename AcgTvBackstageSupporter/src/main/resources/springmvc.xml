@@ -77,7 +77,7 @@
 		<property name="defaultEncoding" value="UTF-8"></property> </bean> -->
 
 
-
+	<!-- shiro 权限注解模式 -->
 	<bean id="lifecycleBeanPostProcessor"
 		class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
@@ -89,5 +89,7 @@
 	</bean>
 
 	<bean
-		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"></bean>
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor" />
+
+	<!-- shiro 权限注解模式 -->
 </beans>

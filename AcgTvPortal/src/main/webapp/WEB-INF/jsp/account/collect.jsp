@@ -90,7 +90,7 @@ td h4 {
 						<c:forEach items="${requestScope.list }" var="v" varStatus="status">
 							<c:if test="${status.count % 4 == 1}">
 								<tr>
-									<td>
+								<td>
 										<br>
 							</c:if>
 							<div class="col-lg-3 col-md-3 col-sm-3">
